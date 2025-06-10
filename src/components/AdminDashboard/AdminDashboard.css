@@ -1,0 +1,413 @@
+/* AdminDashboard.css - Updated Theme based on provided image */
+
+:root {
+    --forest-green: #228B22;         /* Primary forest green */
+    --dark-green: #116B11;           /* Darker shade for accents/hover */
+    --earth-brown: #8B4513;          /* Primary earthy brown */
+    --dark-brown: #663300;           /* Darker brown for hover */
+    --red-logout: #DC143C;           /* Red for logout button */
+    --dark-grey-button: #636e72;     /* Dark grey for secondary buttons */
+    --darker-grey-button: #4a5357;   /* Darker grey for button hover */
+    --light-grey-background: #f0f4f0; /* Very light green-grey background (similar to original) */
+    --white-color: #FFFFFF;
+    --text-color: #333;
+    --error-color: #D32F2F;
+    --success-color: #388E3C;
+}
+
+/* General styles for the body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-grey-background);
+    color: var(--text-color);
+}
+
+/* Main dashboard container */
+.dashboard-container {
+    max-width: 900px; /* Adjusted max-width to look closer to the image */
+    margin: 30px auto; /* Center the container horizontally */
+    padding: 25px;
+    background-color: var(--white-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid var(--forest-green); /* Top border as seen in the previous design */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally within the container */
+}
+
+h1 {
+    color: var(--earth-brown);
+    text-align: center; /* Center the main title */
+    margin-bottom: 10px;
+}
+
+p {
+    text-align: center; /* Center the welcome message */
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 25px; /* More space below welcome message */
+}
+
+/* Messages (success, error, loading) */
+.message {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    width: 80%; /* messages can span more width */
+}
+
+.message.success {
+    background-color: #e8f5e9;
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+.message.error {
+    background-color: #ffebee;
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
+}
+
+.loading-message {
+    text-align: center;
+    padding: 10px;
+    color: var(--earth-brown);
+    font-style: italic;
+    width: 100%; /* Ensure it spans the whole width if necessary */
+}
+
+/* Tab Navigation Buttons */
+.tab-navigation {
+    display: relative;
+    flex-direction: column; /* Stack buttons vertically */
+    width: 90%; /* Adjust width for the button block */
+    margin-bottom: 30px; /* Space between nav buttons and content below */
+}
+.tab-navigation button {
+    border: none;
+
+    padding: 12px 20px;
+    margin-bottom: 10px; /* Space between vertical buttons */
+    border-radius: 20px; /* Slightly more rounded corners */
+    cursor: pointer;
+    font-size: 1.1em; /* Slightly larger font for prominence */
+    text-align: center; /* Center text within buttons */
+    transition: background-color 0.9s ease, transform 0.1s ease; /* Add transform for subtle click effect */
+    color: var(--white-color); /* All text is white on buttons */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-right: 5px;
+}
+
+.tab-navigation button:last-child {
+    margin-bottom: 0; /* No margin after the last button */
+}
+
+.tab-navigation button:hover {
+    transform: translateY(-1px); /* Slight lift on hover */
+}
+
+.tab-navigation button:active {
+    transform: translateY(0); /* Return to normal on click */
+}
+
+/* Specific button colors based on the image */
+.tab-navigation button:first-child { /* Module Management */
+    background-color: var(--forest-green);
+}
+
+.tab-navigation button:first-child:hover {
+    background-color: var(--dark-green);
+}
+
+.tab-navigation button:nth-child(2), /* User Management */
+.tab-navigation button:nth-child(3)   /* System Reports */
+{
+    background-color: var(--earth-brown);
+}
+
+.tab-navigation button:nth-child(2):hover,
+.tab-navigation button:nth-child(3):hover {
+    background-color: var(--dark-brown);
+}
+
+.tab-navigation button.exit-button { /* Exit Module (Logout) */
+    background-color: var(--red-logout);
+}
+
+.tab-navigation button.exit-button:hover {
+    background-color: #a91232; /* Slightly darker red on hover */
+}
+
+.tab-navigation button.active {
+    font-weight: bold;
+    /* You can add a subtle border or different shadow for active state if desired */
+    /* border: 2px solid var(--white-color); */
+}
+
+/* Content Sections (Module Management, User Management, Reports) */
+.module-management-section,
+.user-management-section,
+.reports-section {
+    width: 100%; /* Take full width of the dashboard container */
+    padding: 0 10px; /* Minor horizontal padding */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Heading styles for content sections */
+.module-management-section h2,
+.user-management-section h2,
+.reports-section h2 {
+    color: var(--earth-brown);
+    text-align: left; /* Left align content section headings */
+    margin-top: 0; /* Adjust margin if needed */
+    margin-bottom: 10px; /* Space before the line */
+}
+
+/* Horizontal line below "Module Management" heading */
+.module-management-section h2::after {
+    content: "";
+    display: block;
+    width: 150px; /* Length of the line */
+    height: 2px;
+    background-color: var(--forest-green);
+    margin-top: 5px; /* Space between heading and line */
+    margin-bottom: 20px; /* Space between line and content below */
+}
+
+/* Toggle Buttons for Add/Existing Modules */
+.module-management-section > div:first-of-type { /* This targets the div wrapping the two toggle buttons */
+    display: flex;
+    justify-content: flex-start; /* Align buttons to the left */
+    gap: 15px; /* Space between the two buttons */
+    margin-bottom: 20px; /* Space below these buttons */
+    width: 100%; /* Ensure it spans the content area */
+}
+
+.toggle-form-button {
+    background-color: var(--dark-grey-button);
+    color: var(--white-color);
+    border: none;
+    padding: 10px 18px; /* Larger padding */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-form-button:hover {
+    background-color: var(--darker-grey-button);
+}
+
+/* Module Form (Add New Module) */
+.module-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Increased gap for form elements */
+    padding: 20px; /* More padding inside the form */
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Slightly more rounded */
+    margin-bottom: 25px;
+    background-color: #f9f9f9;
+}
+
+.form-input,
+.form-textarea {
+    padding: 10px; /* More padding for inputs */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    width: calc(100% - 20px); /* Adjust width to account for padding */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 80px; /* Minimum height for textarea */
+}
+
+.form-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1em;
+    color: #555;
+}
+
+.add-button {
+    background-color: var(--forest-green);
+    color: var(--white-color);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    align-self: flex-start; /* Align button to the left */
+    margin-top: 10px;
+}
+
+.add-button:hover {
+    background-color: var(--dark-green);
+}
+
+/* Data Tables (Existing Modules, Users, Reports) */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Rounded corners for the table */
+    overflow: hidden; /* Ensures rounded corners are applied correctly */
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px 15px; /* More padding in table cells */
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.data-table th {
+    background-color: #e9ecef; /* Lighter header background */
+    font-weight: bold;
+    color: #495057;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa; /* Lighter alternating row color */
+}
+
+/* Action Buttons within tables */
+.actions-cell {
+    white-space: nowrap; /* Prevent buttons from wrapping */
+    text-align: center; /* Center the buttons within the cell */
+}
+
+.actions-cell button {
+    background-color: #e0e0e0;
+    color: var(--text-color);
+    border: none;
+    padding: 6px 10px; /* Adjusted padding for smaller buttons */
+    margin: 3px; /* Smaller margin between buttons */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em; /* Slightly smaller font */
+    transition: background-color 0.3s ease;
+}
+
+.actions-cell button:hover {
+    background-color: #d1d1d1;
+}
+
+/* Specific action button colors (from previous CSS, kept for consistency) */
+.delete-button {
+    background-color: #ffdddd !important;
+    color: var(--error-color) !important;
+}
+
+.delete-button:hover {
+    background-color: #ffaaaa !important;
+}
+
+.publish-button {
+    background-color: var(--light-green) !important; /* light-green was #90EE90, using a custom lighter one here */
+    color: var(--dark-green) !important;
+}
+
+.publish-button:hover {
+    background-color: #b7f7b7 !important;
+}
+
+.unpublish-button {
+    background-color: #fffae6 !important;
+    color: #b8860b !important; /* Darker yellow/orange */
+}
+
+.unpublish-button:hover {
+    background-color: #ffe6a3 !important;
+}
+
+.assign-button {
+    background-color: #cce0ff !important;
+    color: #4d79ff !important;
+}
+
+.assign-button:hover {
+    background-color: #a3c2ff !important;
+}
+
+.disable-button {
+    background-color: #ffe0b2 !important;
+    color: #ff9800 !important;
+}
+
+.disable-button:hover {
+    background-color: #ffcc80 !important;
+}
+
+.activate-button {
+    background-color: #b3e5fc !important;
+    color: #03a9f4 !important;
+}
+
+.activate-button:hover {
+    background-color: #81d4fa !important;
+}
+
+.user-role-admin-tag {
+    background-color: #bbdefb;
+    color: #1976d2;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.75em;
+    margin-left: 5px;
+}
+
+/* Revenue Report Style */
+.revenue-report {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 25px;
+}
+
+.revenue-report p strong {
+    font-weight: bold;
+    color: var(--earth-brown);
+}
+
+/* Responsive Design (Basic adjustment) */
+@media (max-width: 768px) {
+    .dashboard-container {
+        margin: 15px;
+        padding: 15px;
+    }
+
+    .tab-navigation {
+        width: 90%; /* Buttons take more width on small screens */
+    }
+
+    .tab-navigation button {
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+
+    .module-management-section > div:first-of-type {
+        flex-direction: column; /* Stack the two grey buttons vertically */
+        gap: 10px;
+    }
+
+    .form-input, .form-textarea {
+        width: 100%; /* Full width inputs */
+    }
+
+    .actions-cell button {
+        margin: 2px; /* Less margin for action buttons */
+    }
+}
